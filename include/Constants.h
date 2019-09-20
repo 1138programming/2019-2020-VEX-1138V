@@ -16,8 +16,8 @@
 // Motor ports
 const int frontLeftBasePort = 18;
 const int frontRightBasePort = 13;
-const int backLeftBasePort = 10;
-const int backRightBasePort = 1;
+const int backLeftBasePort = 7;
+const int backRightBasePort = 4;
 
 const int leftLiftPort = 19;
 const int rightLiftPort = 12;

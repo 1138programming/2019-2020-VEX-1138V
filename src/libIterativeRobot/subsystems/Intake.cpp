@@ -6,7 +6,7 @@ Intake::Intake() {
   leftIntakeMotor = Motor::getMotor(leftIntakeMotorPort, intakeMotorGearset);
   rightIntakeMotor = Motor::getMotor(rightIntakeMotorPort, intakeMotorGearset);
 
-  rightIntakeMotor->reverse();
+  leftIntakeMotor->reverse();
 }
 
 void Intake::initDefaultCommand() {

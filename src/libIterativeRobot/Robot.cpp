@@ -38,22 +38,22 @@ Robot::Robot() {
   partnerController = new pros::Controller(pros::E_CONTROLLER_PARTNER);
 
   // Define buttons and channels
-  libIterativeRobot::JoystickChannel* LeftX = new libIterativeRobot::JoystickChannel(mainController, pros::E_CONTROLLER_ANALOG_LEFT_X);
+  libIterativeRobot::JoystickChannel* RightX = new libIterativeRobot::JoystickChannel(mainController, pros::E_CONTROLLER_ANALOG_RIGHT_X);
   libIterativeRobot::JoystickChannel* LeftY = new libIterativeRobot::JoystickChannel(mainController, pros::E_CONTROLLER_ANALOG_LEFT_Y);
-  libIterativeRobot::JoystickButton* LiftUp = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_R1);
-  libIterativeRobot::JoystickButton* LiftDown = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_R2);
-  libIterativeRobot::JoystickButton* IntakeOpen = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_L1);
-  libIterativeRobot::JoystickButton* IntakeClose = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_L2);
+  libIterativeRobot::JoystickButton* LiftUp = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_L1);
+  libIterativeRobot::JoystickButton* LiftDown = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_L2);
+  libIterativeRobot::JoystickButton* IntakeOpen = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_R1);
+  libIterativeRobot::JoystickButton* IntakeClose = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_R2);
   libIterativeRobot::JoystickButton* LiftToStart = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_DOWN);
   libIterativeRobot::JoystickButton* LiftToHorizontal = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_RIGHT);
   libIterativeRobot::JoystickButton* LiftToTop = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_UP);
   libIterativeRobot::JoystickButton* LiftToBack = new libIterativeRobot::JoystickButton(mainController, pros::E_CONTROLLER_DIGITAL_LEFT);
 
   // Add commands to be run to buttons
-  LeftX->setThreshold(50);
+  RightX->setThreshold(50);
   LeftY->setThreshold(50);
   DriveWithJoy* driveCommand = new DriveWithJoy();
-  LeftX->whilePastThreshold(driveCommand);
+  RightX->whilePastThreshold(driveCommand);
   LeftY->whilePastThreshold(driveCommand);
 
   LiftUp->whileHeld(new LiftControl(true));
