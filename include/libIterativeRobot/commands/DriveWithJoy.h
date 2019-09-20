@@ -11,6 +11,7 @@ class DriveWithJoy: public libIterativeRobot::Command {
     bool isFinished();
     void end();
     void interrupted();
+    void blocked();
     DriveWithJoy();
   private:
     int rightSideSpeed;

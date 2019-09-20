@@ -48,7 +48,7 @@ class PIDTuner {
   protected:
   static constexpr double inertia = 0.5;   // Particle inertia
   static constexpr double confSelf = 1.1;  // Self confidence
-  static constexpr double confSwangler = 1.2; // Particle swangler confidence
+  static constexpr double confSwlift = 1.2; // Particle swlift confidence
   static constexpr int increment = 5;
   static constexpr int divisor = 5;
   static constexpr QTime loopDelta = 10_ms; // NOLINT

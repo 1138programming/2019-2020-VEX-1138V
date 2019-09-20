@@ -3,7 +3,7 @@
 
 #include "libIterativeRobot/commands/Command.h"
 
-class MoveAnglerFor: public libIterativeRobot::Command {
+class MoveLiftFor: public libIterativeRobot::Command {
   public:
     bool canRun();
     void initialize();
@@ -11,7 +11,8 @@ class MoveAnglerFor: public libIterativeRobot::Command {
     bool isFinished();
     void end();
     void interrupted();
-    MoveAnglerFor(unsigned int duration, int speed = 127);
+    void blocked();
+    MoveLiftFor(unsigned int duration, int speed = 127);
   private:
     unsigned int duration;
     unsigned int speed;

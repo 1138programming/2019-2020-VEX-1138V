@@ -40,3 +40,7 @@ void MoveIntakeFor::interrupted() {
   // with a higher priority.
   Robot::intake->move(0);
 }
+
+void MoveIntakeFor::blocked() {
+  
+}

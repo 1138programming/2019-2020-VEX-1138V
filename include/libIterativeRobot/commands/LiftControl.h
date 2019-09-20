@@ -1,5 +1,5 @@
-#ifndef _COMMANDS_ARMCONTROL_H_
-#define _COMMANDS_ARMCONTROL_H_
+#ifndef _COMMANDS_LIFTCONTROL_H_
+#define _COMMANDS_LIFTCONTROL_H_
 
 #include "libIterativeRobot/commands/Command.h"
 
@@ -12,9 +12,9 @@ class LiftControl: public libIterativeRobot::Command {
     void end();
     void interrupted();
     void blocked();
-    LiftControl(bool Up);
+    LiftControl(bool Open);
   private:
     bool Up;
 };
 
-#endif // _COMMANDS_ARMCONTROL_H_
+#endif // _COMMANDS_CLAWCONTROL_H_

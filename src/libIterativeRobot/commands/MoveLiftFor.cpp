@@ -1,42 +1,46 @@
-#include "libIterativeRobot/commands/MoveAnglerFor.h"
+#include "libIterativeRobot/commands/MoveLiftFor.h"
 #include "libIterativeRobot/Robot.h"
 #include "Constants.h"
 
-MoveAnglerFor::MoveAnglerFor(unsigned int duration, int speed) {
+MoveLiftFor::MoveLiftFor(unsigned int duration, int speed) {
   this->duration = duration;
   this->speed = speed;
 
-  requires(Robot::angler);
+  requires(Robot::lift);
   this->priority = 1;
 }
 
-bool MoveAnglerFor::canRun() {
+bool MoveLiftFor::canRun() {
   return true; // This is the default value anyways, so this method can be removed
 }
 
-void MoveAnglerFor::initialize() {
+void MoveLiftFor::initialize() {
   // Perform any initialization steps for this command here, not in the
   // constructor
-  printf("Initiating move angler\n");
+  printf("Initiating move lift\n");
   pros::delay(1000);
   startTime = pros::millis();
 }
 
-void MoveAnglerFor::execute() {
-    Robot::angler->move(speed);
+void MoveLiftFor::execute() {
+    Robot::lift->move(speed);
 }
 
-bool MoveAnglerFor::isFinished() {
+bool MoveLiftFor::isFinished() {
   return pros::millis() > (startTime + duration);
 }
 
-void MoveAnglerFor::end() {
+void MoveLiftFor::end() {
   // Code that runs when isFinished() returns true.
-  Robot::angler->move(0);
+  Robot::lift->move(0);
 }
 
-void MoveAnglerFor::interrupted() {
+void MoveLiftFor::interrupted() {
   // Code that runs when this command is interrupted by another one
   // with a higher priority.
-  Robot::angler->move(0);
+  Robot::lift->move(0);
+}
+
+void MoveLiftFor::blocked() {
+  
 }

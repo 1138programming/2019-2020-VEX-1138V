@@ -31,3 +31,7 @@ void ExampleCommand::interrupted() {
   // Code that runs when this command is interrupted by another one
   // with a higher priority.
 }
+
+void ExampleCommand::blocked() {
+  
+}

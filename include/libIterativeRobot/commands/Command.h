@@ -80,7 +80,8 @@ class Command {
     /**
      * @brief Gets the requirements that a command uses
      *
-     * Used by the EventScheduler to decide whether the command can run.
+     * Used by the EventScheduler to decide whether the command can run
+     *
      * @return The command's requirements as a vector pointer
      */
     std::vector<Subsystem*>& getRequirements();
@@ -101,23 +102,24 @@ class Command {
     friend class CommandGroup;
   public:
     /**
-     * @brief The priority of a default command is 0.
+     * @brief The priority of a default command is 0
      */
     static const int DefaultCommandPriority = 0;
 
     /**
-     * @brief Whether the command can run or not
+     * @brief Whether the Command can run or not
      *
-     * Called by the EventScheduler before a command starts running to check whether it can run or not
-     * @return Whether or not the command can run
+     * Called by the EventScheduler before a Command starts running to check whether it can run or not
+     *
+     * @return Whether or not the Command can run
      */
     virtual bool canRun() = 0;
 
     /**
-     * @brief Called once before the command runs
+     * @brief Called once before the Command runs
      *
-     * Code needed to sets up the command for execution can be put here.
-     * This method is called once before the command begins running
+     * Code needed to sets up the Command for execution can be put here.
+     * This method is called once before the Command begins running
      */
     virtual void initialize() = 0;
 
@@ -133,28 +135,33 @@ class Command {
     virtual bool isFinished() = 0;
 
     /**
-     * @brief Runs once when command is finished.
+     * @brief Runs once when command is finished
      */
     virtual void end() = 0;
 
     /**
-     * @brief Runs once when a command is interrupted.
+     * @brief Runs once when a command is interrupted
      */
     virtual void interrupted() = 0;
 
     /**
-     * @brief Adds the command to the EventScheduler.
+     * @brief Runs once when a command is interrupted
      */
-    void run();
+    virtual void blocked() = 0;
 
     /**
-     * @brief Removes the command from the EventScheduler and interrupts it.
+     * @brief Adds the command to the EventScheduler
      */
-    void stop();
+    virtual void run();
 
     /**
-     * @brief Creates a new command.
-     * @return A command
+     * @brief Removes the command from the EventScheduler and interrupts it
+     */
+    virtual void stop();
+
+    /**
+     * @brief Creates a new Command
+     * @return A Command
      */
     Command();
 };

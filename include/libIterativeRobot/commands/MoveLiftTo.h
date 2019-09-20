@@ -3,7 +3,7 @@
 
 #include "libIterativeRobot/commands/Command.h"
 
-class MoveAnglerTo: public libIterativeRobot::Command {
+class MoveLiftTo: public libIterativeRobot::Command {
   public:
     bool canRun();
     void initialize();
@@ -11,7 +11,8 @@ class MoveAnglerTo: public libIterativeRobot::Command {
     bool isFinished();
     void end();
     void interrupted();
-    MoveAnglerTo(int target);
+    void blocked();
+    MoveLiftTo(int target);
   private:
     int target = 0;
 };

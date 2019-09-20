@@ -12,7 +12,8 @@ namespace libIterativeRobot {
     Idle = 0,
     Running,
     Finished,
-    Interrupted
+    Interrupted,
+    Blocked
   };
 }
 

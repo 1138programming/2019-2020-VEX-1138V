@@ -1,15 +1,17 @@
-#ifndef _SUBSYSTEMS_ARM_H_
-#define _SUBSYSTEMS_ARM_H_
+#ifndef _SUBSYSTEMS_LIFT_H_
+#define _SUBSYSTEMS_LIFT_H_
 
 #include "./Subsystem.h"
 #include "api.h"
 
-class Angler : public libIterativeRobot::Subsystem {
+class Lift : public libIterativeRobot::Subsystem {
   private:
-    // Angler motors
-    Motor* anglerMotor;
+    // Lift motors
+    Motor* leftLiftMotor;
+    Motor* rightLiftMotor;
 
-    PIDController* anglerController;
+    PIDController* leftLiftController;
+    PIDController* rightLiftController;
 
   public:
     void initDefaultCommand();
@@ -20,7 +22,7 @@ class Angler : public libIterativeRobot::Subsystem {
     void lock();
     void disablePID();
     void enablePID();
-    Angler();
+    Lift();
 };
 
 #endif // _SUBSYSTEMS_ARM_H_
