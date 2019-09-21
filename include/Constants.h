@@ -14,7 +14,7 @@
 #define MAX_FOLLOWERS 3
 
 // Motor ports
-const int frontLeftBasePort = 18;
+const int frontLeftBasePort = 6;
 const int frontRightBasePort = 13;
 const int backLeftBasePort = 7;
 const int backRightBasePort = 4;
