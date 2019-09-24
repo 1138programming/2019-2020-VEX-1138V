@@ -18,7 +18,6 @@ void MoveLiftFor::initialize() {
   // Perform any initialization steps for this command here, not in the
   // constructor
   printf("Initiating move lift\n");
-  pros::delay(1000);
   startTime = pros::millis();
 }
 

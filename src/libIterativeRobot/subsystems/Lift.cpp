@@ -6,7 +6,7 @@ Lift::Lift() {
   leftLiftMotor = Motor::getMotor(leftLiftPort, liftMotorGearset);
   rightLiftMotor = Motor::getMotor(rightLiftPort, liftMotorGearset);
 
-  rightLiftMotor->reverse();
+  leftLiftMotor->reverse();
   leftLiftController = new PIDController(leftLiftMotor, 0.32, 0, 0.05);
   rightLiftController = new PIDController(rightLiftMotor, 0.32, 0, 0.05);
 }
