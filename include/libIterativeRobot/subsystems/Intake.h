@@ -7,8 +7,7 @@
 class Intake : public libIterativeRobot::Subsystem {
   private:
     // Claw motors
-    Motor* leftIntakeMotor;
-    Motor* rightIntakeMotor;
+    Motor* intakeMotor;
     
   public:
     void initDefaultCommand();

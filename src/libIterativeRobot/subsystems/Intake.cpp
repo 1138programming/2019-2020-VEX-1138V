@@ -3,10 +3,9 @@
 
 Intake::Intake() {
   // Get intake motors
-  leftIntakeMotor = Motor::getMotor(leftIntakeMotorPort, intakeMotorGearset);
-  rightIntakeMotor = Motor::getMotor(rightIntakeMotorPort, intakeMotorGearset);
+  intakeMotor = Motor::getMotor(intakeMotorPort, intakeMotorGearset);
 
-  leftIntakeMotor->reverse();
+  intakeMotor->reverse();
 }
 
 void Intake::initDefaultCommand() {
@@ -20,7 +19,6 @@ void Intake::initDefaultCommand() {
  */
 
 void Intake::move(int speed) {
-  leftIntakeMotor->setSpeed(speed);
-  rightIntakeMotor->setSpeed(speed);
+  intakeMotor->setSpeed(speed);
   printf("Motor speed set to %d\n", speed);
 }
