@@ -12,7 +12,7 @@ class MoveIntakeFor: public libIterativeRobot::Command {
     void end();
     void interrupted();
     void blocked();
-    MoveIntakeFor(unsigned int duration, int speed = 127);
+    MoveIntakeFor(unsigned int duration, int speed = KMaxMotorSpeed);
   private:
     unsigned int duration;
     int speed;

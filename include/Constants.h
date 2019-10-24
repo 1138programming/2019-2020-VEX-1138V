@@ -36,7 +36,7 @@ const pros::motor_brake_mode_e_t globalBrakeMode = pros::E_MOTOR_BRAKE_HOLD;
 const int globalSlewStep = 14;
 
 //Motor and encoder constants
-const int KMaxMotorSpeed = 127;
+const int KMaxMotorSpeed = 190;
 const int KMaxJoystickValue = 127;
 const int encoderTicks = 360; // Encoder ticks in one revolution
 const float rotationsPerInch = 31.400156410256; // TODO check if this is correct
