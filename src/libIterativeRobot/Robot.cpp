@@ -15,6 +15,8 @@
 #include "libIterativeRobot/commands/AutonGroup1.h"
 #include "libIterativeRobot/commands/AutonGroup2.h"
 
+Robot* Robot::instance = 0;
+
 Base*  Robot::base = 0;
 Lift*   Robot::lift = 0;
 Intake*  Robot::intake = 0;
@@ -26,7 +28,6 @@ pros::Controller* Robot::partnerController = 0;
 
 Robot::Robot() {
   printf("Overridden robot constructor!\n");
-  autonGroup = NULL;
   // Initialize any subsystems
   base = new Base();
   lift  = new Lift();
@@ -76,60 +77,44 @@ Robot::Robot() {
 
 void Robot::robotInit() {
   printf("Robot created.\n");
+  autonChooser->addAutonCommand(new AutonGroup1(), "Auton 1");
 }
 
 void Robot::autonInit() {
   printf("Default autonInit() function\n");
-  libIterativeRobot::EventScheduler::getInstance()->initialize();
   autonChooser->uninit();
-
-  switch (autonChooser->getAutonChoice()) {
-    case 0:
-      printf("Running group %d\n", 1);
-      autonGroup = new AutonGroup1();
-      break;
-  }
-  autonGroup->run();
+  autonChooser->getAutonCommand()->run();
 }
 
 void Robot::autonPeriodic() {
   //printf("Default autonPeriodic() function\n");
-  libIterativeRobot::EventScheduler::getInstance()->update();
   Motor::periodicUpdate();
   PIDController::loopAll();
 }
 
-lv_res_t Robot::print(lv_obj_t* roller) {
-  char* optionName = new char[128]();
-  lv_roller_get_selected_str(roller, optionName);
-  printf("Option selected is called ");
-  printf(optionName);
-  printf("\n");
-  return LV_RES_OK;
-}
-
 void Robot::teleopInit() {
   printf("Default teleopInit() function\n");
-  libIterativeRobot::EventScheduler::getInstance()->initialize();
-  //autonChooser->init();
-
-  //autonGroup = new AutonGroup1();
-  //autonGroup->run();
+  autonChooser->init();
 }
 
 void Robot::teleopPeriodic() {
   //printf("Default teleopPeriodic() function\n");
-  libIterativeRobot::EventScheduler::getInstance()->update();
   Motor::periodicUpdate();
   PIDController::loopAll();
 }
 
 void Robot::disabledInit() {
   printf("Default disabledInit() function\n");
-  libIterativeRobot::EventScheduler::getInstance()->initialize();
   autonChooser->uninit();
 }
 
 void Robot::disabledPeriodic() {
   //printf("Default disabledPeriodic() function\n");
+}
+
+Robot* Robot::getInstance() {
+    if (instance == NULL) {
+        instance = new Robot();
+    }
+    return instance;
 }

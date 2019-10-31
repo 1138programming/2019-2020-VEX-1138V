@@ -17,9 +17,9 @@ namespace libIterativeRobot {
  * Commands implement functionality for one or more subsystems,
  * and their execution and interactions are handled by the EventScheduler.
  * Commands are added to the EventScheduler
- * when their run() method is called, and the command starts if its canRun() method returns true.
- * If its canRun() method returns false, the command does not start and is removed from the EventScheduler.
- * Once a command starts, its initialize() method is called once and then its execute()
+ * when their run() method is called, and the command starts if its canRun() the method returns true.
+ * If the commands canRun() method returns false, the command does not start and it is removed from the EventScheduler.
+ * Once a command starts, its initialize() method is called and then its execute()
  * method is called repeatedly. After each time the execute() method is called, the
  * command's isFinished() method is called. The command stops running when isFinished() returns true.
  * After a command has finished, its end() method is called.
@@ -145,7 +145,9 @@ class Command {
     virtual void interrupted() = 0;
 
     /**
-     * @brief Runs once when a command is interrupted
+     * @brief Runs once when a command is prevented from running by a higher priority command
+     *
+     * When this is called, the command's initialize function has not run.
      */
     virtual void blocked() = 0;
 

@@ -2,7 +2,8 @@
 
 size_t AutonChooser::numAutons;
 std::vector<const char*> AutonChooser::autonNames;
-size_t AutonChooser::auton;
+std::vector<libIterativeRobot::Command*> AutonChooser::autonCommands;
+size_t AutonChooser::autonIndex;
 
 // LVGL Objects
 lv_obj_t* AutonChooser::scrollLeft = NULL;
@@ -12,28 +13,25 @@ lv_obj_t* AutonChooser::scrollRight = NULL;
 AutonChooser* AutonChooser::instance;
 
 AutonChooser::AutonChooser() {
-  auton = 0;
-
-  autonNames.push_back("Auton Group 1\0");
-
-  numAutons = autonNames.size();
+  autonIndex = 0;
+  numAutons = 0;
 }
 
 lv_res_t AutonChooser::updateAutonName(lv_obj_t* btn) {
   if (btn == scrollRight) {
-    if (auton >= numAutons - 1)
-      auton = 0;
+    if (autonIndex >= numAutons - 1)
+      autonIndex = 0;
     else
-      auton++;
+      autonIndex++;
   } else if (btn == scrollLeft) {
-    if (auton <= 0)
-      auton = numAutons - 1;
+    if (autonIndex <= 0)
+      autonIndex = numAutons - 1;
     else
-      auton--;
+      autonIndex--;
   }
-  printf("Auton is %d, size is %d\n", auton, autonNames.size());
+  printf("Auton is %d, size is %d\n", autonIndex, autonNames.size());
   pros::delay(1000);
-  lv_label_set_text(autonName, autonNames[auton]);
+  lv_label_set_text(autonName, autonNames[autonIndex]);
   return LV_RES_OK;
 }
 
@@ -46,7 +44,7 @@ void AutonChooser::init() {
     lv_obj_align(scrollRight, NULL, LV_ALIGN_IN_RIGHT_MID, 0, 0);
 
     autonName = lv_label_create(lv_scr_act(), NULL);
-    lv_label_set_text(autonName, autonNames[auton]);
+    lv_label_set_text(autonName, autonNames[autonIndex]);
     lv_obj_align(autonName, NULL, LV_ALIGN_CENTER, 0, 0);
 
     scrollLeft = lv_btn_create(lv_scr_act(), NULL);
@@ -69,8 +67,14 @@ void AutonChooser::uninit() {
   }
 }
 
-size_t AutonChooser::getAutonChoice() {
-  return auton;
+void AutonChooser::addAutonCommand(libIterativeRobot::Command* command, const char* name) {
+  numAutons++;
+  autonCommands.push_back(command);
+  autonNames.push_back(name);
+}
+
+libIterativeRobot::Command* AutonChooser::getAutonCommand() {
+  return autonCommands[autonIndex];
 }
 
 AutonChooser* AutonChooser::getInstance() {

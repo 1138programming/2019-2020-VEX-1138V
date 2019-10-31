@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "display/lvgl.h"
+#include "libIterativeRobot/commands/Command.h"
 
 #include <vector>
 
@@ -10,7 +11,8 @@ class AutonChooser {
   private:
     static size_t numAutons;
     static std::vector<const char*> autonNames;
-    static size_t auton;
+    static std::vector<libIterativeRobot::Command*> autonCommands;
+    static size_t autonIndex;
 
     // LVGL Objects
     static lv_obj_t* scrollLeft;
@@ -23,7 +25,8 @@ class AutonChooser {
     static lv_res_t updateAutonName(lv_obj_t* btn);
     static void init();
     static void uninit();
-    static size_t getAutonChoice();
+    static void addAutonCommand(libIterativeRobot::Command* command, const char* name);
+    static libIterativeRobot::Command* getAutonCommand();
 
     static AutonChooser* getInstance();
 };

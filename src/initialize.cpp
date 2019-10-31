@@ -19,7 +19,7 @@ void on_center_button() {
  */
 void initialize() {
   Motor::init();
-  libIterativeRobot::RobotBase::runRobot<Robot>();
+  libIterativeRobot::RobotBase::initializeRobot();
 }
 
 /**

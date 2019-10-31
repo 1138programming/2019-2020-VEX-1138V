@@ -8,7 +8,8 @@
 
 class Robot : public libIterativeRobot::RobotBase {
   private:
-    static lv_res_t print(lv_obj_t* roller);
+    static Robot* instance;
+    Robot();
   protected:
     void robotInit();
     void autonInit();
@@ -18,7 +19,7 @@ class Robot : public libIterativeRobot::RobotBase {
     void disabledInit();
     void disabledPeriodic();
   public:
-    Robot();
+    static Robot* getInstance();
 
     // Pointers to every subsystem on the robot:
     static Base* base;
@@ -26,8 +27,6 @@ class Robot : public libIterativeRobot::RobotBase {
     static Intake* intake;
 
     static AutonChooser* autonChooser;
-
-    libIterativeRobot::CommandGroup* autonGroup = NULL;
 
     // Pointers to controllers
     static pros::Controller* mainController;
