@@ -88,10 +88,6 @@ void Robot::autonInit() {
       printf("Running group %d\n", 1);
       autonGroup = new AutonGroup1();
       break;
-    case 1:
-      printf("Running group %d\n", 2);
-      autonGroup = new AutonGroup2();
-      break;
   }
   autonGroup->run();
 }
