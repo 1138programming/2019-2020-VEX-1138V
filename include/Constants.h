@@ -14,13 +14,13 @@
 #define MAX_FOLLOWERS 3
 
 // Motor ports
-const int frontLeftBasePort = 6;
-const int frontRightBasePort = 13;
-const int backLeftBasePort = 7;
-const int backRightBasePort = 4;
+const int frontLeftBasePort = 9;
+const int frontRightBasePort = 2;
+const int backLeftBasePort = 10;
+const int backRightBasePort = 1;
 
-const int leftLiftPort = 19;
-const int rightLiftPort = 12;
+const int leftLiftPort = 16;
+const int rightLiftPort = 15;
 const int intakeMotorPort = 11;
 
 const char bumperPort = 'a';
@@ -36,7 +36,7 @@ const pros::motor_brake_mode_e_t globalBrakeMode = pros::E_MOTOR_BRAKE_HOLD;
 const int globalSlewStep = 14;
 
 //Motor and encoder constants
-const int KMaxMotorSpeed = 190;
+const int KMaxMotorSpeed = 127;
 const int KMaxJoystickValue = 127;
 const int encoderTicks = 360; // Encoder ticks in one revolution
 const float rotationsPerInch = 31.400156410256; // TODO check if this is correct

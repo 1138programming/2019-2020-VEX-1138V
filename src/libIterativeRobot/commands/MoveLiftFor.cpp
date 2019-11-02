@@ -22,6 +22,7 @@ void MoveLiftFor::initialize() {
 }
 
 void MoveLiftFor::execute() {
+    printf("Moving lift, time is %d\n", pros::millis() - startTime);
     Robot::lift->move(speed);
 }
 

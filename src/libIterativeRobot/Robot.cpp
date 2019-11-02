@@ -83,6 +83,7 @@ void Robot::robotInit() {
 void Robot::autonInit() {
   printf("Default autonInit() function\n");
   autonChooser->uninit();
+  //printf("Auton command is %x\n", autonChooser->getAutonCommand());
   autonChooser->getAutonCommand()->run();
 }
 
