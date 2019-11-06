@@ -2,6 +2,9 @@
 #include "libIterativeRobot/Robot.h"
 #include "Constants.h"
 
+//* Controls the Intake without duration or distance
+
+
 IntakeControl::IntakeControl(bool Open) {
   this->Open = Open;
   requires(Robot::intake);

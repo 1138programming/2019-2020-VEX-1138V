@@ -2,6 +2,9 @@
 #include "libIterativeRobot/Robot.h"
 #include "Constants.h"
 
+//* Controls the Lift without distance or duration
+
+
 LiftControl::LiftControl(bool Up) {
   this->Up = Up;
   requires(Robot::lift);

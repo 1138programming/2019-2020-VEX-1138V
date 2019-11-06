@@ -4,8 +4,12 @@
 #include "libIterativeRobot/commands/MoveLiftFor.h"
 #include "libIterativeRobot/commands/MoveIntakeFor.h"
 
-AutonGroup1::AutonGroup1() { //* Humzah: Where it say 100, that is the time, MAKE SURE TO HAVE A 60%+ CHARGED BATTERY AS MUCH AS POSSIBLE
- //add parallel only one at a time, add sequential only while most recent parallel
+//* Put the default auton here.
+
+
+AutonGroup1::AutonGroup1() { 
+  //* Humzah: Where it say 100, that is the time, MAKE SURE TO HAVE A 60%+ CHARGED BATTERY AS MUCH AS POSSIBLE
+  //add parallel only one at a time, add sequential only while most recent parallel
   //left speed, right speed, time
   //Compile: prosv5 make WHENEVER YOU CHANGE THE CODE
   // Upload: prosv5 u --slot [slot as an int] --name "[name as a string]"

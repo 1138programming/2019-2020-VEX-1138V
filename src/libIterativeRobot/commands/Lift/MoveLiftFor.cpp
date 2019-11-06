@@ -2,6 +2,9 @@
 #include "libIterativeRobot/Robot.h"
 #include "Constants.h"
 
+//* Moves Lift for duration
+
+
 MoveLiftFor::MoveLiftFor(unsigned int duration, int speed) {
   this->duration = duration;
   this->speed = speed;

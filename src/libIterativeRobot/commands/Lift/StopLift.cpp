@@ -1,38 +1,45 @@
-#include "libIterativeRobot/commands/StopBase.h"
+#include "libIterativeRobot/commands/StopLift.h"
 #include "libIterativeRobot/Robot.h"
 #include "Constants.h"
 
-StopBase::StopBase() {
-  //requires(Robot::base);
+//* Stop lift
+
+
+StopLift::StopLift() {
+  //requires(Robot::lift);
   //this->priority = DefaultCommandPriority; // Lowest priority
 }
 
-bool StopBase::canRun() {
+bool StopLift::canRun() {
   return true; // This is the default value anyways, so this method can be removed
 }
 
-void StopBase::initialize() {
+void StopLift::initialize() {
   // Perform any initialization steps for this command here, not in the
   // constructor
+  Robot::lift->move(0);
+  //Robot::lift->lock();
+  //Robot::lift->enablePID();
 }
 
-void StopBase::execute() {
-  Robot::base->moveAtSpeed(0, 0);
+void StopLift::execute() {
+  Robot::lift->move(0);
+  //printf("Stopping lift\n");
 }
 
-bool StopBase::isFinished() {
+bool StopLift::isFinished() {
   return false;
 }
 
-void StopBase::end() {
+void StopLift::end() {
   // Code that runs when isFinished() returns true.
 }
 
-void StopBase::interrupted() {
+void StopLift::interrupted() {
   // Code that runs when this command is interrupted by another one
   // with a higher priority.
 }
 
-void StopBase::blocked() {
+void StopLift::blocked() {
   
 }

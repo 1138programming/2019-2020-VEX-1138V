@@ -2,6 +2,9 @@
 #include "libIterativeRobot/Robot.h"
 #include "Constants.h"
 
+//* Moves the base for a certain duration
+
+
 DriveForTime::DriveForTime(int leftSideSpeed, int rightSideSpeed, unsigned int duration) {
   this->leftSideSpeed = leftSideSpeed;
   this->rightSideSpeed = rightSideSpeed;

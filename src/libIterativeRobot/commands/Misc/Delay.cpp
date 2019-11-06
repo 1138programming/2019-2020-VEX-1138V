@@ -2,6 +2,9 @@
 #include "libIterativeRobot/Robot.h"
 #include "Constants.h"
 
+//* This can be used to delay the program in CommandGroups.
+
+
 Delay::Delay(int duration) {
   this->startTime = 0;
   this->duration = duration;
