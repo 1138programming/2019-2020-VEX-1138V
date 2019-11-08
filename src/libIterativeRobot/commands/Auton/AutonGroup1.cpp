@@ -27,18 +27,18 @@ AutonGroup1::AutonGroup1() {
   addSequentialCommand(new MoveIntakeFor(300, KMaxMotorSpeed)); //grab cube 
   addSequentialCommand(new MoveLiftFor(300, KMaxMotorSpeed)); //lift up 
   addSequentialCommand(new DriveForTime(KMaxMotorSpeed, KMaxMotorSpeed, 300)); //drive forward to next cube, may not be necessary
-  addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)) //! lower cube onto next cube LINE A 
+  addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)); //! lower cube onto next cube LINE A 
   addSequentialCommand(new MoveIntakeFor(300, -KMaxMotorSpeed)); //let go of cube
   addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)); //lower lift down
-  addSequentialCommand(new DriveForTime(KMaxMotorSpeed, KMaxMotorSpeed, 300); //may need to drive forward a little
+  addSequentialCommand(new DriveForTime(KMaxMotorSpeed, KMaxMotorSpeed, 300)); //may need to drive forward a little
   addSequentialCommand(new MoveIntakeFor(300, KMaxMotorSpeed)); //grab both cubes 
   addSequentialCommand(new MoveLiftFor(300, KMaxMotorSpeed)); //! lift both cubes up //LINE B 
   addSequentialCommand(new DriveForTime(300, KMaxMotorSpeed, -KMaxMotorSpeed)); //turn 90 degrees
   addSequentialCommand(new DriveForTime(300, KMaxMotorSpeed, KMaxMotorSpeed)); //drive forward to next cube 
-  addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)) //! lower cube onto next cube //LINE C 
+  addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)); //! lower cube onto next cube //LINE C 
   addSequentialCommand(new MoveIntakeFor(300, -KMaxMotorSpeed)); //let go of cube
   addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)); //lower lift down
-  addSequentialCommand(new DriveForTime(KMaxMotorSpeed, KMaxMotorSpeed, 300); //may need to drive forward a little
+  addSequentialCommand(new DriveForTime(KMaxMotorSpeed, KMaxMotorSpeed, 300)); //may need to drive forward a little
   addSequentialCommand(new MoveIntakeFor(300, KMaxMotorSpeed)); //grab both cubes 
   addSequentialCommand(new MoveLiftFor(300, KMaxMotorSpeed)); //! lift both cubes up  //LINE D 
   addSequentialCommand(new DriveForTime(300, KMaxMotorSpeed, KMaxMotorSpeed)); //drive forward into the zone 
