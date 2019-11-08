@@ -77,7 +77,8 @@ Robot::Robot() {
 
 void Robot::robotInit() {
   printf("Robot created.\n");
-  autonChooser->addAutonCommand(new AutonGroup1(), "Auton 1");
+  autonChooser->addAutonCommand(new AutonGroup1(), "Testing Auton");
+  autonChooser->addAutonCommand(new AutonGroup2(), "Backup Auton");
 }
 
 void Robot::autonInit() {
