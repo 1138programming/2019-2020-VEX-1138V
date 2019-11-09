@@ -27,8 +27,8 @@ const char bumperPort = 'a';
 
 // Motor gearsets
 const pros::motor_gearset_e_t baseMotorGearset = pros::E_MOTOR_GEARSET_18;
-const pros::motor_gearset_e_t liftMotorGearset = pros::E_MOTOR_GEARSET_36;
-const pros::motor_gearset_e_t intakeMotorGearset = pros::E_MOTOR_GEARSET_36;
+const pros::motor_gearset_e_t liftMotorGearset = pros::E_MOTOR_GEARSET_18;
+const pros::motor_gearset_e_t intakeMotorGearset = pros::E_MOTOR_GEARSET_18;
 
 // Global configurations
 const pros::motor_encoder_units_e_t globalEncoderUnits = pros::E_MOTOR_ENCODER_COUNTS;
