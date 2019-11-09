@@ -21,7 +21,7 @@ const int backRightBasePort = 1;
 
 const int leftLiftPort = 16;
 const int rightLiftPort = 15;
-const int intakeMotorPort = 12;
+const int intakeMotorPort = 13;
 
 const char bumperPort = 'a';
 
