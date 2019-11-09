@@ -2,6 +2,7 @@
 #define _SUBSYSTEMS_BASE_H_
 
 #include "./Subsystem.h"
+#include "abstractBaseClasses/LinearProfiler.h"
 #include "api.h"
 
 class Base : public libIterativeRobot::Subsystem {
@@ -12,9 +13,21 @@ class Base : public libIterativeRobot::Subsystem {
     Motor* backLeftMotor;
     Motor* backRightMotor;
 
+    LinearProfiler* leftProfiler;
+    LinearProfiler* rightProfiler;
+
+
   public:
     void initDefaultCommand();
     void moveAtSpeed(int leftSpeed, int rightSpeed);
+    void setLinearTarget(int leftTarget, int rightTarget);
+    void setLinearTargetRelative(int leftTarget, int rightTarget);
+    void initLinearMovement();
+    void updateLinearMovement();
+    bool atLinearTarget();
+    void stopLinearMovement();
+    LinearProfiler* getLeftProfiler();
+    LinearProfiler* getRightProfiler();
     Base();
 };
 
