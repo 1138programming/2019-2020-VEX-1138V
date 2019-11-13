@@ -25,11 +25,11 @@ LinearProfiler::LinearProfiler(Motor* outputMotor) {
   posPID = new PIDController(outputMotor, kP, kI, kD);
 }
 
-void LinearProfiler::setMaxVel(int maxVel) {
+void LinearProfiler::setMaxVel(double maxVel) {
   this->maxVel = maxVel;
 }
 
-void LinearProfiler::setMaxAccel(int maxAccel) {
+void LinearProfiler::setMaxAccel(double maxAccel) {
   this->maxAccel = maxAccel;
 }
 
@@ -62,7 +62,7 @@ PIDController* LinearProfiler::getPID() {
 }
 
 void LinearProfiler::init() {
-  int initial = getSensorValue();
+  /*int initial = getSensorValue();
   int distance = target - initial;
 
   // The middle point on the path
@@ -84,10 +84,31 @@ void LinearProfiler::init() {
   } else {
     dir = -1;
     t_accel = -maxAccel;
+  }*/
+
+  initial = getSensorValue();
+  distance = abs(target - initial);
+  midPoint = distance / 2;
+  flatPoint = (int)(0.5 * maxVel * maxVel / maxAccel);
+
+  if (initial < target) {
+    dir = 1;
+    t_accel = maxAccel;
+  } else {
+    dir = -1;
+    t_accel = -maxAccel;
   }
 
+  if (midPoint > flatPoint) {
+    deccelPoint = distance - flatPoint;
+  } else {
+    flatPoint = midPoint;
+    deccelPoint = midPoint;
+  }
+
+  t_pos = 0;
   pidSetpoint = initial;
-  posPID->setSetpoint((int)pidSetpoint);
+  posPID->setSetpoint(pidSetpoint);
   posPID->enable();
 
   dt = 0;
@@ -110,9 +131,9 @@ void LinearProfiler::update() {
   lastVel = vel;
 
   //printf("%p: target pos: %f, target t_vel: %f, target t_accel: %f, pos: %d, t_vel: %f\n", this, pidSetpoint, t_vel, t_accel, getSensorValue(), ((double)deltaPos / dt));
-  printf("%p: %f, %f, %f, %d, %f\n", this, pidSetpoint, t_vel, t_accel, getSensorValue(), vel);
+  printf("%p: %f, %f, %f, %d, %f\n", this, t_pos, t_vel, t_accel, getSensorValue(), vel);
 
-  if (fabs(pidSetpoint) < flatPoint) {
+  /*if (fabs(pidSetpoint) < flatPoint) {
     t_accel = maxAccel * dir;
   } else if (fabs(pidSetpoint) < deccelPoint) {
     t_accel = 0;
@@ -129,9 +150,28 @@ void LinearProfiler::update() {
     t_accel = 0;
   }
 
-  pidSetpoint += t_vel * dt;
+  pidSetpoint += t_vel * dt;*/
 
-  posPID->setSetpoint((int)pidSetpoint);
+  if (t_pos < flatPoint) {
+    t_accel = maxAccel;
+  } else if (t_pos < deccelPoint) {
+    t_accel = 0;
+  } else {
+    t_accel = -maxAccel;
+  }
+  t_vel += t_accel * dt;
+
+  if (t_vel > maxVel) {
+    t_vel = maxVel;
+    t_accel = 0;
+  } else if (t_vel < 0) {
+    t_vel = 0;
+    t_accel = 0;
+  }
+  t_pos += t_vel * dt;
+
+  pidSetpoint = dir * t_pos + initial;
+  posPID->setSetpoint(pidSetpoint);
 
   //printf("%p: %d\n", this, (int)pidSetpoint);
 }

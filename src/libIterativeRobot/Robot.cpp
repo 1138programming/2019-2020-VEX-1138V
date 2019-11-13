@@ -11,6 +11,7 @@
 #include "libIterativeRobot/commands/IntakeControl.h"
 #include "libIterativeRobot/commands/MoveLiftFor.h"
 #include "libIterativeRobot/commands/MoveLiftTo.h"
+#include "libIterativeRobot/commands/BaseLinearMovement.h"
 
 #include "libIterativeRobot/commands/AutonGroup1.h"
 #include "libIterativeRobot/commands/AutonGroup2.h"
@@ -97,6 +98,9 @@ void Robot::autonPeriodic() {
 void Robot::teleopInit() {
   printf("Default teleopInit() function\n");
   autonChooser->init();
+
+  BaseLinearMovement* c = new BaseLinearMovement(5000, 5000, 2, 0.01);
+  c->run();
 }
 
 void Robot::teleopPeriodic() {

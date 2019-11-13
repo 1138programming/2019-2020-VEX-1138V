@@ -18,16 +18,20 @@ class LinearProfiler {
 
     int dt = 0;
 
-    double maxAccel = 0.17;
-    double maxVel = 10.0;
+    double maxAccel = 0.01;
+    double maxVel = 3.0;
 
     double t_accel = 0;
     double t_vel = 0;
-    double pidSetpoint = 0;
+    double t_pos = 0;
+    int pidSetpoint = 0;
 
-    int target = 0;
+    int initial = 0;
     int flatPoint = 0;
+    int midPoint = 0;
     int deccelPoint = 0;
+    int target = 0;
+    int distance = 0;
 
     int dir = 0;
   protected:
@@ -41,8 +45,8 @@ class LinearProfiler {
     LinearProfiler(Motor* outputMotor);
 
     // Functions to set constants
-    void setMaxVel(int maxVel);
-    void setMaxAccel(int maxAccel);
+    void setMaxVel(double maxVel);
+    void setMaxAccel(double maxAccel);
     void setThreshold(int threshold);
 
     // Target functions

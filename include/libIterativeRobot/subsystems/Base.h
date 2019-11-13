@@ -15,9 +15,10 @@ class Base : public libIterativeRobot::Subsystem {
 
     LinearProfiler* leftProfiler;
     LinearProfiler* rightProfiler;
-
-
   public:
+    static const double kDefaultMaxAccel;
+    static const double kDefaultMaxVel;
+
     void initDefaultCommand();
     void moveAtSpeed(int leftSpeed, int rightSpeed);
     void setLinearTarget(int leftTarget, int rightTarget);
@@ -26,6 +27,8 @@ class Base : public libIterativeRobot::Subsystem {
     void updateLinearMovement();
     bool atLinearTarget();
     void stopLinearMovement();
+    void setMaxVel(double maxVel);
+    void setMaxAccel(double maxAccel);
     LinearProfiler* getLeftProfiler();
     LinearProfiler* getRightProfiler();
     Base();
