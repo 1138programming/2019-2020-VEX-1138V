@@ -1,6 +1,6 @@
 #include "libIterativeRobot/commands/AutonGroup1.h"
 #include "libIterativeRobot/commands/Delay.h"
-#include "libIterativeRobot/commands/DriveForTime.h"
+#include "libIterativeRobot/commands/BaseLinearMovement.h"
 #include "libIterativeRobot/commands/MoveLiftFor.h"
 #include "libIterativeRobot/commands/MoveIntakeFor.h"
 
@@ -16,9 +16,9 @@ AutonGroup1::AutonGroup1() {
   // prosv5 u --slot 1 --name "1 cube auton"
 
   addSequentialCommand(new MoveLiftFor(300, KMaxMotorSpeed/2));
-  addSequentialCommand(new DriveForTime(KMaxMotorSpeed/2, KMaxMotorSpeed/2, 1000));
+  addSequentialCommand(new BaseLinearMovement(5000, 5000, 3, 0.01));
   addSequentialCommand(new Delay(500));
-  addSequentialCommand(new DriveForTime(-KMaxMotorSpeed, -KMaxMotorSpeed, 300));
+  addSequentialCommand(new BaseLinearMovement-(5000, -5000, 3, 0.01));
 
   //*IMPORTANT NOTE: Lines a-b and c-d are the exact same, so just tune them to be the same ok 
   //*IMPORTANT NOTE: ADD DELAYS AS NEEDED 
@@ -26,24 +26,24 @@ AutonGroup1::AutonGroup1() {
   /* addSequentialCommand(new MoveLiftFor(300, KMaxMotorSpeed/2)); //start by lifting up
   addSequentialCommand(new MoveIntakeFor(300, KMaxMotorSpeed)); //grab cube 
   addSequentialCommand(new MoveLiftFor(300, KMaxMotorSpeed)); //lift up 
-  addSequentialCommand(new DriveForTime(KMaxMotorSpeed, KMaxMotorSpeed, 300)); //drive forward to next cube, may not be necessary
+  addSequentialCommand(new BaseLinearMovement(5000, 5000, 3, 0.01)); //drive forward to next cube, may not be necessary
   addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)); //! lower cube onto next cube LINE A 
   addSequentialCommand(new MoveIntakeFor(300, -KMaxMotorSpeed)); //let go of cube
   addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)); //lower lift down
-  addSequentialCommand(new DriveForTime(KMaxMotorSpeed, KMaxMotorSpeed, 300)); //may need to drive forward a little
+  addSequentialCommand(new BaseLinearMovement(5000, 5000, 3, 0.01)); //may need to drive forward a little
   addSequentialCommand(new MoveIntakeFor(300, KMaxMotorSpeed)); //grab both cubes 
   addSequentialCommand(new MoveLiftFor(300, KMaxMotorSpeed)); //! lift both cubes up //LINE B 
-  addSequentialCommand(new DriveForTime(300, KMaxMotorSpeed, -KMaxMotorSpeed)); //turn 90 degrees
-  addSequentialCommand(new DriveForTime(300, KMaxMotorSpeed, KMaxMotorSpeed)); //drive forward to next cube 
+  addSequentialCommand(new BaseLinearMovement(5000, 5000, 3, 0.01)); //turn 90 degrees
+  addSequentialCommand(new BaseLinearMovement(5000, 5000, 3, 0.01)); //drive forward to next cube 
   addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)); //! lower cube onto next cube //LINE C 
   addSequentialCommand(new MoveIntakeFor(300, -KMaxMotorSpeed)); //let go of cube
   addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)); //lower lift down
-  addSequentialCommand(new DriveForTime(KMaxMotorSpeed, KMaxMotorSpeed, 300)); //may need to drive forward a little
+  addSequentialCommand(new BaseLinearMovement(5000, 5000, 3, 0.01)); //may need to drive forward a little
   addSequentialCommand(new MoveIntakeFor(300, KMaxMotorSpeed)); //grab both cubes 
   addSequentialCommand(new MoveLiftFor(300, KMaxMotorSpeed)); //! lift both cubes up  //LINE D 
-  addSequentialCommand(new DriveForTime(300, KMaxMotorSpeed, KMaxMotorSpeed)); //drive forward into the zone 
+  addSequentialCommand(new BaseLinearMovement(5000, 5000, 3, 0.01)); //drive forward into the zone 
   addSequentialCommand(new MoveLiftFor(300, -KMaxMotorSpeed)); //lower the lift
   addSequentialCommand(new MoveIntakeFor(300, -KMaxMotorSpeed)); //release second cube 
-  addSequentialCommand(new DriveForTime(300, -KMaxMotorSpeed, -KMaxMotorSpeed)); //pull back, auton is done, win wurlds 
+  addSequentialCommand(new BaseLinearMovement(5000, 5000, 3, 0.01)); //pull back, auton is done, win wurlds 
   */
 }
