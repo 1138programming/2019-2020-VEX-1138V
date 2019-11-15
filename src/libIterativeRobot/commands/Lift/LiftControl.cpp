@@ -4,7 +4,6 @@
 
 //* Controls the Lift without distance or duration
 
-
 LiftControl::LiftControl(bool Up) {
   this->Up = Up;
   requires(Robot::lift);
@@ -45,5 +44,5 @@ void LiftControl::interrupted() {
 }
 
 void LiftControl::blocked() {
-  
+
 }

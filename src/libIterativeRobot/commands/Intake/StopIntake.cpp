@@ -4,7 +4,6 @@
 
 //* Stop Intake
 
-
 StopIntake::StopIntake() {
   //requires(Robot::intake);
   //this->priority = DefaultCommandPriority; // Lowest priority
@@ -37,5 +36,5 @@ void StopIntake::interrupted() {
 }
 
 void StopIntake::blocked() {
-  
+
 }

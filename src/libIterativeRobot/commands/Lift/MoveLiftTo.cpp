@@ -4,7 +4,6 @@
 
 //* Hopeful movement of lift based off PID.
 
-
 MoveLiftTo::MoveLiftTo(int target = 0) {
   requires(Robot::lift);
   this->priority = 1;
@@ -41,5 +40,5 @@ void MoveLiftTo::interrupted() {
 }
 
 void MoveLiftTo::blocked() {
-  
+
 }

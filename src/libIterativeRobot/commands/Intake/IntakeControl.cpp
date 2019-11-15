@@ -4,7 +4,6 @@
 
 //* Controls the Intake without duration or distance
 
-
 IntakeControl::IntakeControl(bool Open) {
   this->Open = Open;
   requires(Robot::intake);
@@ -41,5 +40,5 @@ void IntakeControl::interrupted() {
 }
 
 void IntakeControl::blocked() {
-  
+
 }

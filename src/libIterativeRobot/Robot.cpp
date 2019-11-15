@@ -99,7 +99,7 @@ void Robot::teleopInit() {
   printf("Default teleopInit() function\n");
   autonChooser->init();
 
-  //BaseLinearMovement* c = new BaseLinearMovement(5000, 5000, 2, 0.01);
+  //BaseLinearMovement* c = new BaseLinearMovement(-5000, -5000, 3, 0.005);
   //c->run();
 }
 

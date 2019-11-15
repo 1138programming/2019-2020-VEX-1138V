@@ -4,7 +4,6 @@
 
 //* Stop lift
 
-
 StopLift::StopLift() {
   //requires(Robot::lift);
   //this->priority = DefaultCommandPriority; // Lowest priority
@@ -41,5 +40,5 @@ void StopLift::interrupted() {
 }
 
 void StopLift::blocked() {
-  
+
 }

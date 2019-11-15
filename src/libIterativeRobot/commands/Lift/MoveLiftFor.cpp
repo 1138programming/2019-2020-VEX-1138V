@@ -4,7 +4,6 @@
 
 //* Moves Lift for duration
 
-
 MoveLiftFor::MoveLiftFor(unsigned int duration, int speed) {
   this->duration = duration;
   this->speed = speed;
@@ -45,5 +44,5 @@ void MoveLiftFor::interrupted() {
 }
 
 void MoveLiftFor::blocked() {
-  
+
 }

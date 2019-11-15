@@ -4,7 +4,6 @@
 
 //* Moves the Intake based off of time
 
-
 MoveIntakeFor::MoveIntakeFor(unsigned int duration, int speed) {
   this->duration = duration;
   this->speed = speed;
@@ -45,5 +44,5 @@ void MoveIntakeFor::interrupted() {
 }
 
 void MoveIntakeFor::blocked() {
-  
+
 }
