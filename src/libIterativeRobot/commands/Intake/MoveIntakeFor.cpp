@@ -19,12 +19,12 @@ bool MoveIntakeFor::canRun() {
 void MoveIntakeFor::initialize() {
   // Perform any initialization steps for this command here, not in the
   // constructor
-  //printf("Initializing intake\n");
+  printf("Initializing intake\n");
   startTime = pros::millis();
 }
 
 void MoveIntakeFor::execute() {
-    //printf("Moving intake\n");
+    printf("Moving intake\n");
     Robot::intake->move(speed);
 }
 
@@ -34,6 +34,7 @@ bool MoveIntakeFor::isFinished() {
 
 void MoveIntakeFor::end() {
   // Code that runs when isFinished() returns true.
+  printf("Intake Stopped\n");
   Robot::intake->move(0);
 }
 

@@ -21,9 +21,11 @@ void IntakeControl::initialize() {
     Robot::intake->move(KMaxMotorSpeed);
   else
     Robot::intake->move(-KMaxMotorSpeed);
+  printf("Intake Initialized\n");
 }
 
 void IntakeControl::execute() {
+  printf("Intake execute\n");
 }
 
 bool IntakeControl::isFinished() {
@@ -32,6 +34,7 @@ bool IntakeControl::isFinished() {
 
 void IntakeControl::end() {
   // Code that runs when isFinished() returns true.
+  printf("Intake Stopped\n");
 }
 
 void IntakeControl::interrupted() {
